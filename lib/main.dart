@@ -11,9 +11,17 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData tema = ThemeData();
+
     return MaterialApp(
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.purple,
+          secondary: Colors.amber,
+        ),
+      ),
     );
   }
 }
@@ -50,6 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+    Navigator.of(context).pop();
   }
 
   _openTransactionFormModal(ctx) {
@@ -67,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: ()=> _openTransactionFormModal(context),
+            onPressed: () => _openTransactionFormModal(context),
           )
         ],
       ),
@@ -93,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(
           Icons.add,
         ),
-        onPressed: ()=> _openTransactionFormModal(context),
+        onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
