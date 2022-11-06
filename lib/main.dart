@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
@@ -11,9 +12,35 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData tema = ThemeData();
+
     return MaterialApp(
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.purple,
+          secondary: Colors.amber,
+        ),
+        textTheme: TextTheme(
+          headline6: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.blueGrey,
+          ),
+          bodyText1: TextStyle(
+            fontFamily: 'Quicksand',
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 24,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -50,6 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+    Navigator.of(context).pop();
   }
 
   _openTransactionFormModal(ctx) {
@@ -63,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Despesas Pessoais'),
+        title: const Text('Despesas Pessoais'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: ()=> _openTransactionFormModal(context),
+            onPressed: () => _openTransactionFormModal(context),
           )
         ],
       ),
@@ -93,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(
           Icons.add,
         ),
-        onPressed: ()=> _openTransactionFormModal(context),
+        onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
