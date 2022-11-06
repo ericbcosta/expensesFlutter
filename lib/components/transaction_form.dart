@@ -38,6 +38,14 @@ class _TransactionFormState extends State<TransactionForm> {
               onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
                 labelText: 'Título',
+                errorStyle: TextStyle(
+                  fontFamily: 'OpenSans',
+                  color: Colors.redAccent,
+                ),
+              ),
+              style: TextStyle(
+                fontFamily: 'OpenSans',
+                color: Colors.blueGrey,
               ),
             ),
             TextField(
@@ -48,6 +56,14 @@ class _TransactionFormState extends State<TransactionForm> {
               onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
                 labelText: 'Valor (R\$)',
+                errorStyle: TextStyle(
+                  fontFamily: 'OpenSans',
+                  color: Colors.redAccent,
+                ),
+              ),
+              style: TextStyle(
+                fontFamily: 'OpenSans',
+                color: Colors.blueGrey,
               ),
             ),
             Row(
